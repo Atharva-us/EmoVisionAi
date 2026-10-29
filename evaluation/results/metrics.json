@@ -1,0 +1,181 @@
+{
+  "summary": {
+    "dataset": "FER2013 (Hugging Face mirror Jeneral/fer-2013, parquet conversion)",
+    "split": "test (PublicTest + PrivateTest)",
+    "samples": 7178,
+    "protocol": "Classifier-only on pre-cropped 48x48 faces; argmax over the 7 shared classes (Contempt excluded)",
+    "accuracy": 0.561,
+    "macro_f1": 0.5076,
+    "weighted_f1": 0.5611,
+    "macro_precision": 0.5059,
+    "macro_recall": 0.5243,
+    "evaluated_at": "2026-10-28T15:03:12+00:00",
+    "hardware": "13th Gen Intel(R) Core(TM) i5-13420H, CPU only, PyTorch 2.14.1+cpu, 8 threads",
+    "mean_latency_ms": 49.02,
+    "per_class": [
+      {
+        "label": "Anger",
+        "precision": 0.5031,
+        "recall": 0.5115,
+        "f1": 0.5072,
+        "support": 958
+      },
+      {
+        "label": "Disgust",
+        "precision": 0.2745,
+        "recall": 0.5045,
+        "f1": 0.3556,
+        "support": 111
+      },
+      {
+        "label": "Fear",
+        "precision": 0.3234,
+        "recall": 0.3809,
+        "f1": 0.3498,
+        "support": 1024
+      },
+      {
+        "label": "Happiness",
+        "precision": 0.8213,
+        "recall": 0.8523,
+        "f1": 0.8365,
+        "support": 1774
+      },
+      {
+        "label": "Neutral",
+        "precision": 0.5262,
+        "recall": 0.5693,
+        "f1": 0.5469,
+        "support": 1233
+      },
+      {
+        "label": "Sadness",
+        "precision": 0.5232,
+        "recall": 0.4066,
+        "f1": 0.4576,
+        "support": 1247
+      },
+      {
+        "label": "Surprise",
+        "precision": 0.5692,
+        "recall": 0.4452,
+        "f1": 0.4997,
+        "support": 831
+      }
+    ],
+    "confusion_matrix": {
+      "labels": [
+        "Anger",
+        "Disgust",
+        "Fear",
+        "Happiness",
+        "Neutral",
+        "Sadness",
+        "Surprise"
+      ],
+      "matrix": [
+        [
+          490,
+          72,
+          165,
+          40,
+          92,
+          62,
+          37
+        ],
+        [
+          28,
+          56,
+          14,
+          2,
+          2,
+          8,
+          1
+        ],
+        [
+          143,
+          16,
+          390,
+          52,
+          153,
+          212,
+          58
+        ],
+        [
+          17,
+          21,
+          59,
+          1512,
+          53,
+          14,
+          98
+        ],
+        [
+          105,
+          18,
+          59,
+          131,
+          702,
+          159,
+          59
+        ],
+        [
+          178,
+          20,
+          128,
+          70,
+          317,
+          507,
+          27
+        ],
+        [
+          13,
+          1,
+          391,
+          34,
+          15,
+          7,
+          370
+        ]
+      ]
+    },
+    "class_distribution": {
+      "Anger": 958,
+      "Disgust": 111,
+      "Fear": 1024,
+      "Happiness": 1774,
+      "Neutral": 1233,
+      "Sadness": 1247,
+      "Surprise": 831
+    },
+    "latency": [
+      {
+        "description": "Classifier only, batch size 1 (224x224 input)",
+        "samples": 200,
+        "mean_ms": 49.02,
+        "median_ms": 48.6,
+        "p95_ms": 54.46
+      },
+      {
+        "description": "Full pipeline: JPEG decode + YuNet detection + classifier, 640x480 frame",
+        "samples": 200,
+        "mean_ms": 73.42,
+        "median_ms": 73.44,
+        "p95_ms": 79.75
+      }
+    ],
+    "secondary_protocol": {
+      "name": "Unrestricted 8-class argmax (Contempt predictions count as errors)",
+      "accuracy": 0.5545,
+      "macro_f1": 0.5069,
+      "contempt_prediction_rate": 0.0157
+    },
+    "notes": [
+      "Cross-dataset evaluation: the model was trained on AffectNet and never saw FER2013 during training.",
+      "FER2013 is low-resolution (48x48 grayscale) and has known label noise; the model was trained on higher-resolution colour images, so this is a domain-shifted benchmark.",
+      "Batch throughput: 33 images/s at batch size 64.",
+      "YuNet found the face in 198/200 synthetic 640x480 latency frames (upscaled 48x48 faces; not a measure of detector accuracy on real webcam video).",
+      "Test-set metrics do not demonstrate reliable real-world emotion recognition."
+    ]
+  }
+}

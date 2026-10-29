@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Node
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Large binaries: downloaded by scripts/setup_models.py and evaluation/prepare_dataset.py
+models/*.pt
+models/*.safetensors
+models/*.onnx
+models/*.part
+evaluation/data/
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Additional model and dataset files
+*.pth
+*.pkl
+*.pickle
+*.bin
+*.h5
+*.hdf5
+*.joblib
+*.pt
+*.safetensors
+*.onnx
+
+# Local datasets and generated artifacts
+datasets/
+data/
+evaluation/data/
